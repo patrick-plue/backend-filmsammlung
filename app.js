@@ -24,12 +24,9 @@ app.get("/user", (req, res) => {
   const username = req.query.username;
   const password = "123456";
 
-  bcrypt.genSalt(10, function (err, salt) {
-    bcrypt.hash(password, salt, function (err, hash) {
-      // Store hash in your password DB.
-      res.send(hash);
-    });
-  });
+  bcrypt.compare(password, "$2b$10$.jwjcAyhgftup0c9VrLtK.v7DHKIzJBkcGNT8197pPlcEvd115Mha", function(err, result) {
+    if(result) res.send("logged in!")
+});
 });
 
 app.post("/user", (req, res) => {
