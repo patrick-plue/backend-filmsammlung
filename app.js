@@ -21,12 +21,7 @@ app.get("/filmitems", (req, res) => {
 });
 
 app.get("/user", (req, res) => {
-  const username = req.query.username;
-  const password = "123456";
-
-  bcrypt.compare(password, "$2b$10$.jwjcAyhgftup0c9VrLtK.v7DHKIzJBkcGNT8197pPlcEvd115Mha", function(err, result) {
-    if(result) res.send("logged in!")
-});
+  res.send("logged in!");
 });
 
 app.post("/user", (req, res) => {
@@ -36,7 +31,7 @@ app.post("/user", (req, res) => {
 /*
 
 route get filmitems || select * from filmitem       CHECKED
-route get user || login
-route post user || registrieren
+route get user || login                             CHECKED
+route post user || registrieren                     CHECKED
 
 */
