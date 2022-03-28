@@ -19,9 +19,16 @@ app.get('/filmitems', (req, res) => {
   res.send('FILMITEMS');
 });
 
+app.get('/user', (req, res) => {
+  res.send('Logged In')
+})
+
+app.post('/user', (req, res) => {
+res.send('Registriert!')
+})
 /*
 
-route get filmitems || select * from filmitem
+route get filmitems || select * from filmitem       CHECKED
 route get user || login
 route post user || registrieren
 
