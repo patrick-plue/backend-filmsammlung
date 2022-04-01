@@ -23,13 +23,11 @@ app.get("/filmitems", (req, res) => {
   let films = [];
   client.query(`SELECT * FROM filmitem`, (error, response) => {
     if (!error) {
-      films = response.rows;
+      res.send(response.rows);
     } else {
       res.send(error);
     }
   });
-
-  setTimeout(() => res.send(films), 500);
 });
 
 app.get("/filmitems/genre", (req, res) => {
