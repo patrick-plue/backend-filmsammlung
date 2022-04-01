@@ -32,6 +32,23 @@ app.get("/filmitems", (req, res) => {
   setTimeout(() => res.send(films), 500);
 });
 
+app.get("/filmitems/genre", (req, res) => {
+  let id = req.query.id;
+  console.log(id);
+  client.query(
+    `SELECT genre FROM public.filmtogenre WHERE filmid = '${id}'`,
+    (error, response) => {
+      if (!error) {
+        res.send(response.rows);
+      } else {
+        console.log(error);
+      }
+    }
+  );
+
+  // setTimeout(() => res.send(films), 500);
+});
+
 app.get("/user", (req, res) => {
   res.send("logged in!");
 });
