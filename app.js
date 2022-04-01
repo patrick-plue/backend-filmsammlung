@@ -51,7 +51,7 @@ app.get("/filmitems/genre", (req, res) => {
 
 app.get("/filmitems/genreAll", (req, res) => {
   client.query(
-    `SELECT genre FROM public.filmtogenre`,
+    `SELECT DISTINCT genre FROM public.filmtogenre`,
     (error, response) => {
       if (!error) {
         res.send(response.rows);
