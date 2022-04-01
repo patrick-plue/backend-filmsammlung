@@ -50,6 +50,16 @@ app.get("/filmitems/genre", (req, res) => {
 });
 
 app.get("/filmitems/genreAll", (req, res) => {
+  client.query(`SELECT genre FROM public.filmtogenre`, (error, response) => {
+    if (!error) {
+      res.send(response.rows);
+    } else {
+      console.log(error);
+    }
+  });
+});
+
+app.get("/filmitems/genreAllDistinct", (req, res) => {
   client.query(
     `SELECT DISTINCT genre FROM public.filmtogenre`,
     (error, response) => {
