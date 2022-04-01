@@ -49,6 +49,19 @@ app.get("/filmitems/genre", (req, res) => {
   // setTimeout(() => res.send(films), 500);
 });
 
+app.get("/filmitems/genreAll", (req, res) => {
+  client.query(
+    `SELECT genre FROM public.filmtogenre`,
+    (error, response) => {
+      if (!error) {
+        res.send(response.rows);
+      } else {
+        console.log(error);
+      }
+    }
+  );
+});
+
 app.get("/user", (req, res) => {
   res.send("logged in!");
 });
